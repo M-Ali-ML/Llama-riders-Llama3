@@ -37,7 +37,7 @@ const Header = () => {
             </li>
             <li className="nav-item">
               <Link
-                to="https://llama-riders.streamlit.app/"
+                to="https://llama-riders-job-assistance.streamlit.app/"
                 className="nav-link"
               >
                 Model
