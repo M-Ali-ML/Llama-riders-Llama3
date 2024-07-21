@@ -8,9 +8,6 @@ import streamlit as st
 import tempfile
 
 
-
-
-
 @st.cache_data
 def webscrape_url(url):
     url = url.replace("https://", "")
@@ -22,6 +19,7 @@ def process_uploaded_file(uploaded_file):
     parser = LlamaParse(result_type="markdown")
     file_extractor = {".pdf": parser}
 
+    # https://github.com/run-llama/llama_index/discussions/11946
     with tempfile.TemporaryDirectory() as temp_dir:
         temp_file_path = os.path.join(temp_dir, uploaded_file.name)
         with open(temp_file_path, "wb") as f:
@@ -118,5 +116,3 @@ def llm_agent_cover(context=None, question=None, max_tokens=4096, temperature=0.
 
 
 
-
-# https://github.com/run-llama/llama_index/discussions/11946
