@@ -1,11 +1,9 @@
 import streamlit as st
 import os
-from dotenv import load_dotenv
 import nest_asyncio
 
 from llm import * 
 
-load_dotenv()
 nest_asyncio.apply()
 
 if st.secrets:
@@ -20,7 +18,7 @@ st.markdown("<h1 style='text-align: center;'>Job Application Assistant</h1>", un
 # Input form
 with st.form("input_form"):
     cv_file = st.file_uploader("Upload your CV (PDF)", type=["pdf"])
-    linkedin_file = st.file_uploader("Upload your Linkedin profile as a pdf [optional]",  type=["pdf"])
+    linkedin_file = st.file_uploader("Upload your Linkedin profile as a pdf [optional]",  type=["pdf"], help="You can create one from your linkedin profile")
     job_post_url = st.text_input("Enter job post URL")
     option = st.selectbox("Choose an option", ["Question", "Cover Letter"])
     user_input = st.text_area("Enter your question, if applicable", )
