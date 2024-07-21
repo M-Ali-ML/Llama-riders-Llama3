@@ -13,7 +13,7 @@ if st.secrets:
 
 
 # Streamlit app
-st.markdown("<h1 style='text-align: center;'>Job Application Assistant</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>ResuMate 🤵 Your AI Wingman for Job Hunting</h1>", unsafe_allow_html=True)
 
 # Input form
 with st.form("input_form"):
