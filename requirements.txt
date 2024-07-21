@@ -1,0 +1,4 @@
+streamlit
+nest-asyncio
+llama-index
+llama-index-llms-together

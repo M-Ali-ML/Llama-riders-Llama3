@@ -1,12 +1,7 @@
 import os
-from together import Together
-from dotenv import load_dotenv
 from llama_parse import LlamaParse
 from llama_index.core import SimpleDirectoryReader
-import nest_asyncio
-import glob
 import requests
-import re
 from llama_index.llms.together import TogetherLLM
 from llama_index.core.llms import ChatMessage
 import streamlit as st
