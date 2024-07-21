@@ -16,7 +16,7 @@ const LandingPage = () => {
             with our AI assistant and unlock new career opportunities.
           </p>
           <button className="button px-3 py-1 rounded me-3">
-            <Link to="https://neuroflow.streamlit.app/">Test Model</Link>
+            <Link to="https://llama-riders.streamlit.app/">Test Model</Link>
           </button>
 
           <button className="buton px-3 py-1 rounded">

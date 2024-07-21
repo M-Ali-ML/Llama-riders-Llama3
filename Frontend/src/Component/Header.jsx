@@ -36,7 +36,10 @@ const Header = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="https://neuroflow.streamlit.app/" className="nav-link">
+              <Link
+                to="https://llama-riders.streamlit.app/"
+                className="nav-link"
+              >
                 Model
               </Link>
             </li>
