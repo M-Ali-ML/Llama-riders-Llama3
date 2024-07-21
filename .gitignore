@@ -163,3 +163,8 @@ cython_debug/
 
 # vscode
 .vscode
+
+#secrets
+secrets.toml
+
+assets

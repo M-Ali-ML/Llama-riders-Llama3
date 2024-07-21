@@ -1,4 +1,18 @@
 import streamlit as st
+import os
+from dotenv import load_dotenv
+import nest_asyncio
+
+from llm import * 
+
+load_dotenv()
+nest_asyncio.apply()
+
+if st.secrets:
+    print("secrets found")
+    os.environ['TOGETHER_API_KEY'] = st.secrets["TOGETHER_API_KEY"]
+    os.environ['LLAMA_CLOUD_API_KEY'] = st.secrets["LLAMA_CLOUD_API_KEY"]
+
 
 # Streamlit app
 st.markdown("<h1 style='text-align: center;'>Job Application Assistant</h1>", unsafe_allow_html=True)
@@ -6,15 +20,27 @@ st.markdown("<h1 style='text-align: center;'>Job Application Assistant</h1>", un
 # Input form
 with st.form("input_form"):
     cv_file = st.file_uploader("Upload your CV (PDF)", type=["pdf"])
-    linkedin_url = st.text_input("Enter your LinkedIn URL")
+    linkedin_file = st.file_uploader("Upload your Linkedin profile as a pdf [optional]",  type=["pdf"])
+    job_post_url = st.text_input("Enter job post URL")
     option = st.selectbox("Choose an option", ["Question", "Cover Letter"])
-    user_input = st.text_area("Enter your question or cover letter details")
+    user_input = st.text_area("Enter your question, if applicable", )
     submit_button = st.form_submit_button("Submit")
 
 # Validation and response placeholder
 if submit_button:
-    if cv_file is None or not linkedin_url or not user_input:
-        st.error("Please fill out all fields before submitting.")
+    if cv_file is None or not job_post_url:
+        st.error("Please fill the required fields before submitting.")
     else:
         st.subheader("Generated Response")
-        st.write("Response will be displayed here.")
+
+        # LLM
+        job_post_parsed = webscrape_url(job_post_url)
+        if linkedin_file:
+            linkedin_parse = process_uploaded_file(linkedin_file)
+        cv_parsed = process_uploaded_file(cv_file)
+        user_context = llm_agent_KIE(CV=cv_parsed, linkedin=linkedin_parse, job_details=job_post_parsed, max_tokens=4096, temperature=0.1, stream=False)
+        if option == "Question":
+            result = llm_agent_question(context=user_context, question=user_input, max_tokens=4096, temperature=0.3, stream=True)
+        else:
+            result = llm_agent_cover(context=user_context, question=None, max_tokens=4096, temperature=0.3, stream=True)
+        st.write_stream(result)
