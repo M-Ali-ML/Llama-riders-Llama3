@@ -35,6 +35,9 @@ if submit_button:
         job_post_parsed = webscrape_url(job_post_url)
         if linkedin_file:
             linkedin_parse = process_uploaded_file(linkedin_file)
+        else:
+            linkedin_parse = None
+        
         cv_parsed = process_uploaded_file(cv_file)
         user_context = llm_agent_KIE(CV=cv_parsed, linkedin=linkedin_parse, job_details=job_post_parsed, max_tokens=4096, temperature=0.1, stream=False)
         if option == "Question":

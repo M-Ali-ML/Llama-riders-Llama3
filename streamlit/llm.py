@@ -74,6 +74,7 @@ def llm_agent_question(context=None, question=None, max_tokens=4096, temperature
         role="system", content=f"""You are an AI assitance that answer job related questions based on 
         context provided which include key informtation of user CV, linkedin profile and job. Answer in a formal way and
         don't mention the source of your information.
+        Provide answer as if you were the user.
         context = {context}
         """
     ),
@@ -103,6 +104,7 @@ def llm_agent_cover(context=None, question=None, max_tokens=4096, temperature=0.
             job details.
             Answer in a formal and clear way and don't mention source of information.
             Use the name provided in context for the cover letter signing off.
+            Provide answer as if you were the user.
             context = {context}
             cover letter:
 
