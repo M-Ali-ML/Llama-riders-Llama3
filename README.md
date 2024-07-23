@@ -6,6 +6,8 @@ _**ResuMate**_ is a Job Hunting AI-powered tool designed to streamline the job a
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://llama-riders-job-assistance.streamlit.app/)
 
+![DEMO_GIF](.\demo_gif.gif)
+
 
 <table>
   <tbody>

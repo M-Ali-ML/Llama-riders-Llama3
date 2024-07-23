@@ -88,7 +88,7 @@ def llm_agent_question(context=None, question=None, max_tokens=4096, temperature
         yield r.delta
 
 
-def llm_agent_cover(context=None, question=None, max_tokens=4096, temperature=0.2, stream=True):
+def llm_agent_cover(context=None, max_tokens=4096, temperature=0.2, stream=True):
 
     llm = TogetherLLM(model=f"meta-llama/Meta-Llama-3-70B-Instruct-Turbo",
             api_key=os.environ.get('TOGETHER_API_KEY'),
