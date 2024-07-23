@@ -6,6 +6,7 @@ from llama_index.llms.together import TogetherLLM
 from llama_index.core.llms import ChatMessage
 import streamlit as st
 import tempfile
+from datetime import datetime
 
 
 @st.cache_data
@@ -75,6 +76,7 @@ def llm_agent_question(context=None, question=None, max_tokens=4096, temperature
         context provided which include key informtation of user CV, linkedin profile and job. Answer in a formal way and
         don't mention the source of your information.
         Provide answer as if you were the user.
+        Today's date is {datetime.today().strftime('%Y-%m-%d')}.
         context = {context}
         """
     ),
@@ -105,6 +107,7 @@ def llm_agent_cover(context=None, max_tokens=4096, temperature=0.2, stream=True)
             Answer in a formal and clear way and don't mention source of information.
             Use the name provided in context for the cover letter signing off.
             Provide answer as if you were the user.
+            Today's date is {datetime.today().strftime('%Y-%m-%d')}.
             context = {context}
             cover letter:
 
